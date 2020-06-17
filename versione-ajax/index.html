@@ -13,8 +13,8 @@
                 <img src="../public/img/logo-spotify.png" alt="logo image" />
             </div>
             <div class="my-select">
-                <select id="">
-                    <option value="">-- Seleziona Genere --</option>
+                <select id="mySelect">
+                    <option value="">-- Tutti i Generi --</option>
                 </select>
             </div>
         </header>
@@ -50,6 +50,12 @@
                     {{year}}
                 </div>
             </div>
+        </script>
+
+        <script id="select-template" type="text/x-handlebars-template">
+            <option value={{genre}}>
+                {{genre}}
+            </option>
         </script>
         <!-- --------- -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
