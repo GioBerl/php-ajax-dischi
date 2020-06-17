@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../public/css/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="../public/img/logo-spotify.png" alt="logo image" />
+            </div>
+            <div class="my-select">
+                <select id="">
+                    <option value="">-- Seleziona Genere --</option>
+                </select>
+            </div>
+        </header>
+        <main>
+            <!-- <div class="card">
+                <img
+                    src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg"
+                    alt="album image"
+                />
+                <div class="title">
+                    New Jersey
+                </div>
+                <div class="author">
+                    Bon Jovi
+                </div>
+                <div class="year">
+                    1988
+                </div>
+            </div> -->
+        </main>
+
+        <!-- HANDLEBARS -->
+        <script id="card-template" type="text/x-handlebars-template">
+            <div class="card" data-genre={{genre}}>
+                <img src={{poster}} alt="album image" />
+                <div class="title">
+                    {{title}}
+                </div>
+                <div class="author">
+                    {{author}}
+                </div>
+                <div class="year">
+                    {{year}}
+                </div>
+            </div>
+        </script>
+        <!-- --------- -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../public/js/main.js"></script>
+    </body>
+</html>

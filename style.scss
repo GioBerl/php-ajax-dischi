@@ -1,0 +1,64 @@
+$bg-header: rgb(59, 33, 204);
+$height-header: 100px;
+$height-logo-img: 50px;
+$bg-color-card: rgba(0, 0, 255, 0.692);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: $bg-header;
+    height: $height-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+
+    .logo {
+        img {
+            height: $height-logo-img;
+        }
+    }
+}
+
+main {
+    background-color: rgb(21, 107, 141);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .card {
+        margin: 40px;
+        width: 200px;
+        height: 300px;
+        background-color: $bg-color-card;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        img {
+            width: 80%;
+            height: 50%;
+            border-radius: 5px;
+        }
+
+        .title,
+        .author,
+        .year {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+
+            &:hover {
+                background-color: darken($bg-color-card, 15%);
+                cursor: pointer;
+            }
+        }
+    }
+}
