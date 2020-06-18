@@ -11,27 +11,24 @@ $(document).ready(function () {
             url: phpUrl,
             data: { author: authorSelected },
             success: function (response) {
-                stampaCard(response, authorSelected);
+                stampaCard(response);
             },
         });
     });
 
-    function stampaCard(myArray, myAuthor) {
-        // console.log(author);
+    function stampaCard(myArray) {
         $("main").html("");
         for (var i = 0; i < myArray.length; i++) {
             var element = myArray[i];
-            if (element.author == myAuthor) {
-                var context = {
-                    poster: element.poster,
-                    title: element.title,
-                    author: element.author,
-                    year: element.year,
-                    genre: element.genre,
-                };
-                var html = template(context);
-                $("main").append(html);
-            }
+            var context = {
+                poster: element.poster,
+                title: element.title,
+                author: element.author,
+                year: element.year,
+                genre: element.genre,
+            };
+            var html = template(context);
+            $("main").append(html);
         }
     }
 });

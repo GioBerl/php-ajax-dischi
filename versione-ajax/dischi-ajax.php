@@ -71,15 +71,24 @@ $dischi = [
         'genre' => 'Pop',
         'year' => '1987',
     ],
-    [
-        'poster' => 'https://m.media-amazon.com/images/I/71K9CbNZPsL._SS500_.jpg',
-        'title' => 'Bad',
-        'author' => 'Michael Jacjson',
-        'genre' => 'Pop',
-        'year' => '1987',
-    ],
 ];
 
+if (!empty($_GET["author"])) {
+    $author = $_GET["author"];
+    $disks = [];
+    foreach ($dischi as $disco) {
+        # code...
+        if ($disco['author'] == $author) {
+            # code...
+            $disks[] = $disco;
+        }
+        ;
+    }
+    ;
+} else {
+    $disks = $dischi;
+}
+;
 header('Content-Type: application/json');
 
-echo (json_encode($dischi));
+echo json_encode($disks);
