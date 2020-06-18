@@ -71,6 +71,13 @@ $dischi = [
         'genre' => 'Pop',
         'year' => '1987',
     ],
+    [
+        'poster' => 'https://m.media-amazon.com/images/I/71K9CbNZPsL._SS500_.jpg',
+        'title' => 'Bad',
+        'author' => 'Michael Jacjson',
+        'genre' => 'Pop',
+        'year' => '1987',
+    ],
 ];
 
 header('Content-Type: application/json');

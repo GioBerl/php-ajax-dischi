@@ -11,7 +11,6 @@ $(document).ready(function () {
         url: localUrl,
         success: function (response) {
             stampaCard(response);
-            generaOptions(response);
         },
         error: function () {
             console.log("errore");
@@ -51,6 +50,7 @@ $(document).ready(function () {
     }
 
     function stampaCard(arrayDati) {
+        generaOptions(arrayDati);
         for (var i = 0; i < arrayDati.length; i++) {
             var singleObj = arrayDati[i];
 
