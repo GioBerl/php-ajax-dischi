@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log("ciao");
     var template = Handlebars.compile($("#card-template").html());
 
     var phpUrl = "../versione-ajax/dischi-ajax.php";
