@@ -1,8 +1,8 @@
 $(document).ready(function () {
+    console.log("ciao");
     var template = Handlebars.compile($("#card-template").html());
 
-    var phpUrl =
-        "http://localhost:8888/boolean-php/php-ajax-dischi/versione-ajax/dischi-ajax.php";
+    var phpUrl = "../versione-ajax/dischi-ajax.php";
 
     $("#mySelect").on("change", function () {
         var authorSelected = $(":selected").val();
