@@ -3,8 +3,7 @@ $(document).ready(function () {
     var templateSelect = Handlebars.compile($("#select-template").html());
     var arrayGenre = [];
 
-    localUrl =
-        "http://localhost:8888/boolean-php/php-ajax-dischi/versione-ajax/dischi-ajax.php";
+    localUrl = "./dischi-ajax.php";
 
     $.ajax({
         method: "GET",

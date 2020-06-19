@@ -82,13 +82,13 @@ if (!empty($_GET["author"])) {
             # code...
             $disks[] = $disco;
         }
-        ;
+
     }
-    ;
+
 } else {
     $disks = $dischi;
 }
-;
+
 header('Content-Type: application/json');
 
 echo json_encode($disks);
