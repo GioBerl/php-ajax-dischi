@@ -1,68 +1,69 @@
 $(document).ready(function () {
-    var templateFunc = Handlebars.compile($("#card-template").html());
-    var templateSelect = Handlebars.compile($("#select-template").html());
-    var arrayGenre = [];
-
-    localUrl = "./dischi-ajax.php";
-
+    var dataUrl = "../database/dischi.php";
     $.ajax({
         method: "GET",
-        url: localUrl,
+        url: dataUrl,
         success: function (response) {
-            stampaCard(response);
+            creaCard(response);
+            creaSelect(response);
         },
         error: function () {
             console.log("errore");
         },
     });
 
-    //AL CAMBIO DELLA SELECT
-    $("#mySelect").on("change", function () {
-        var optionSelected = $(this).find("option:selected").val();
-        console.log(optionSelected);
-        if (optionSelected) {
-            $(".card").hide();
-            // console.log(optionSelected);
-            // console.log($(`.card[data-genre=${optionSelected}]`));
-            $(`.card[data-genre=${optionSelected}]`).show();
+    //CAMBIO DELLA SELECT
+    $("#authorSelect").on("change", function () {
+        if ($(this).val()) {
+            var authorSelected = $(this).val();
+            var queryObj = { author: authorSelected };
         } else {
-            $(".card").show();
+            //non servirebbe, ma per ricordarmi che di la se la query non ha parametri mi rimanda tutti i dischi
+            var queryObj = null;
         }
+        $.ajax({
+            method: "GET",
+            url: dataUrl,
+            data: queryObj,
+            success: function (response) {
+                console.log(response);
+                creaCard(response);
+            },
+            error: function (err) {
+                console.log(err);
+            },
+        });
     });
 
-    function generaOptions(arrayDati) {
-        for (var i = 0; i < arrayDati.length; i++) {
-            var singleObj = arrayDati[i];
-
-            if (!arrayGenre.includes(singleObj.genre)) {
-                arrayGenre.push(singleObj.genre);
-            }
-        }
-
-        for (var j = 0; j < arrayGenre.length; j++) {
-            var context = {
-                genre: arrayGenre[j],
+    function creaCard(myArray) {
+        $("main").html("");
+        var template = Handlebars.compile($("#card-template").html());
+        myArray.forEach((disco) => {
+            var dati_disco = {
+                imgUrl: disco.poster,
+                title: disco.title,
+                author: disco.author,
+                year: disco.year,
             };
-            var html = templateSelect(context);
-            $("#mySelect").append(html);
-        }
+            var html = template(dati_disco);
+            $("main").append(html);
+        });
     }
 
-    function stampaCard(arrayDati) {
-        generaOptions(arrayDati);
-        for (var i = 0; i < arrayDati.length; i++) {
-            var singleObj = arrayDati[i];
-
-            var context = {
-                title: singleObj.title,
-                author: singleObj.author,
-                year: singleObj.year,
-                poster: singleObj.poster,
-                genre: singleObj.genre,
+    function creaSelect(myArray) {
+        var autori = [];
+        var template = Handlebars.compile($("#select-template").html());
+        myArray.forEach(function (disco) {
+            if (!autori.includes(disco.author)) {
+                autori.push(disco.author);
+            }
+        });
+        autori.forEach((autore) => {
+            var nome_autore = {
+                author: autore,
             };
-
-            var html = templateFunc(context);
-            $("main").append(html);
-        }
+            var html = template(nome_autore);
+            $("#authorSelect").append(html);
+        });
     }
 });

@@ -1,0 +1,64 @@
+.rotate {
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+}
+
+.stopRotate {
+    animation-name: stopRotate;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.parti {
+    animation-name: parti;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.torna {
+    animation-name: torna;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+    // from {
+    //     transform: rotate(0deg);
+    // }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes stopRotate {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes parti {
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes torna {
+    from {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}

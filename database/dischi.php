@@ -71,24 +71,34 @@ $dischi = [
         'genre' => 'Pop',
         'year' => '1987',
     ],
+    [
+        'poster' => 'https://img.discogs.com/ivwm2Jom7cdgEc5HXSV_OPEqV30=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-294033-1151290881.jpeg.jpg',
+        'title' => 'Thriller',
+        'author' => 'Michael Jacjson',
+        'genre' => 'Pop',
+        'year' => '1982',
+    ],
 ];
 
-if (!empty($_GET["author"])) {
-    $author = $_GET["author"];
-    $disks = [];
-    foreach ($dischi as $disco) {
-        # code...
-        if ($disco['author'] == $author) {
-            # code...
-            $disks[] = $disco;
+// verifico se lo script viene richiesto da ajax
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    //verifico che la chiamata ajax mi stia passando dei parametri nella query
+    if (!empty($_GET)) {
+        $author = $_GET["author"];
+        $disks = [];
+        foreach ($dischi as $disco) {
+
+            if ($disco['author'] == $author) {
+
+                $disks[] = $disco;
+            }
         }
 
+    } else {
+        $disks = $dischi;
     }
 
-} else {
-    $disks = $dischi;
+    // quindi voglio un oggetto json come risposta
+    header('Content-Type: application/json');
+    echo json_encode($disks);
 }
-
-header('Content-Type: application/json');
-
-echo json_encode($disks);

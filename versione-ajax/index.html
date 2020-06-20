@@ -3,62 +3,53 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Versione AJAX</title>
+        <title>VERSIONE AJAX</title>
+
         <link rel="stylesheet" href="../public/css/style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
     <body>
         <header>
-            <div class="logo">
-                <img src="../public/img/logo-spotify.png" alt="logo image" />
-            </div>
-            <div class="my-select">
-                <select id="mySelect">
-                    <option value="">-- Tutti i Generi --</option>
-                </select>
-            </div>
+            <h1>GIRADISCHI AJAX</h1>
+            <select id="authorSelect">
+                <option value="">-- Tutti gli Artisti --</option>
+            </select>
         </header>
-        <main>
-            <!-- <div class="card">
-                <img
-                    src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg"
-                    alt="album image"
-                />
-                <div class="title">
-                    New Jersey
-                </div>
-                <div class="author">
-                    Bon Jovi
-                </div>
-                <div class="year">
-                    1988
-                </div>
-            </div> -->
-        </main>
+        <main></main>
 
-        <!-- HANDLEBARS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
         <script id="card-template" type="text/x-handlebars-template">
-            <div class="card" data-genre={{genre}}>
-                <img src={{poster}} alt="album image" />
-                <div class="title">
+            <div class="card">
+                <div class="img-container">
+                    <img src={{imgUrl}} alt="copertina album {{title}}" />
+                </div>
+
+                <div class="titolo">
                     {{title}}
                 </div>
-                <div class="author">
+                <div class="autore">
                     {{author}}
                 </div>
-                <div class="year">
+                <small class="anno">
                     {{year}}
+                </small>
+                <div class="base-stecca">
+                    <div class="stecca">
+                        <div class="puntina"></div>
+                    </div>
                 </div>
             </div>
         </script>
 
         <script id="select-template" type="text/x-handlebars-template">
-            <option value={{genre}}>
-                {{genre}}
+            <option value="{{author}}">
+                {{author}}
             </option>
         </script>
-        <!-- --------- -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="../public/js/animation.js"></script>
         <script src="../public/js/main.js"></script>
     </body>
 </html>
